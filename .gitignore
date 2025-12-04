@@ -1,0 +1,38 @@
+# Virtual Environments
+venv/
+.env
+.vscode/
+.idea/
+
+# The Studio Output (Don't track generated worlds or videos)
+outputs/
+*.mp4
+*.png
+*.jpg
+*.gif
+*.wav
+*.mp3
+
+# Local model weights (Crucial: Ignore massive safetensors/bin files)
+models/
+*.safetensors
+*.ckpt
+*.pth
+*.bin
+*.pt
+*.onnx
+
+# Hugging Face & Torch Cache
+.cache/
+huggingface/
+torch/
+
+# Python junk
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+*.spec
+
+# Specific Project Files
+*.jsonl

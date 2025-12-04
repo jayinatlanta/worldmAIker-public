@@ -1,0 +1,15 @@
+torch>=2.0.0
+torchvision
+diffusers
+transformers
+accelerate
+safetensors
+gradio==5.0.0
+opencv-python
+pillow
+numpy
+imageio
+wakepy
+einops
+timm
+pydantic==2.10.6
