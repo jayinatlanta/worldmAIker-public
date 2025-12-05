@@ -944,7 +944,18 @@ def get_last_stable_frame(world_name):
         
     return None
 
-
+def cleanup_dream_stack():
+    """Unloads ALL Dream Stack models (VAE/RNN/Guide) aggressively."""
+    # This is essentially a re-run of unload_dream_stack_only
+    # but as a public function for explicit chaining.
+    global loaded_dream_models, stop_dreaming_flag
+    
+    stop_dreaming_flag = True # Ensure loop is dead
+    unload_dream_stack_only() # The aggressive cleanup logic
+    loaded_dream_models.clear()
+    cleanup_memory() # Force GC and CUDA cache clear
+    print("✨ Dream Stack confirmed clear. Ready for Builder.")
+    return "Dream Stack Cleared." # Return status message
 
 def get_room_count(world_name):
     """Counts the number of successfully created room folders."""
@@ -1749,12 +1760,18 @@ with gr.Blocks(theme=glass_theme, title="worldmAIker") as app:
     expansion_chain_logic(wander_btn.click(lambda: None, None, None))
     expansion_chain_logic(
         edge_signal.change(
-            # New FN: If signal is "EXPAND", return the world name (current_world_state).
-            # Change gr.NoOp() to gr.skip()
+            # STEP 0: Filter the signal (EXPAND or skip)
             lambda sig, world_name: world_name if sig == "EXPAND" else gr.skip(),
             inputs=[edge_signal, current_world_state],
-            # Output MUST match the input to the next step (wander_further_prep).
-            outputs=[current_world_state] # Pass the world name to the next chain
+            outputs=[current_world_state]
+        ).then(
+            # STEP 1 (NEW): EXPLICIT STACK CLEANUP
+            cleanup_dream_stack, 
+            inputs=[], 
+            outputs=[auto_status] # Update the status box immediately
+        ).then(
+            # STEP 2: The original wander_further_prep can now run safely
+             wander_further_prep, inputs=current_world_state, outputs=[auto_status, custom_prompt] 
         )
     )
 
