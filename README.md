@@ -1,6 +1,6 @@
 # 🌍 worldmAIker: Infinite Autonomous World Builder
 
-**worldmAIker** is the world's first free, fully autonomous, recursive, local AI world-building and exploration engine. It doesn't just generate scenes; it *dreams* them, travels through them, and physically constructs them in real-time using a symphony of state-of-the-art local models.
+**worldmAIker** is the world's first free, fully autonomous, recursive, local AI world-building and exploration engine. It doesn't just generate scenes; it *dreams* them, travels through them, and physically constructs them in real-time using a symphony of state-of-the-art local models. It can also answer your questions about its world, and you're free to navigate the world yourself with directional buttons.
 
 From a single prompt, it hallucinates a 360° reality, renders it, animates it, learns its physics, and then uses that knowledge to dream up the next horizon—infinitely. It is a self-contained, creative singularity running on a relatively small GPU (~3GB free VRAM).
 
@@ -91,6 +91,7 @@ Train the AI on your own footage.
 ### Mode 3: The Guide & Dreaming
 Interact with the world while exploring.
 
+*   **Manual Navigation:** Use the directional buttons (⬅️ ⬆️ ⬇️ ➡️) to manually move through the world step-by-step.
 *   **Ask the Guide:** In the **Explore** tab, type a question (e.g., "What architectural style is this?") and click **Ask**. The VLM will analyze the current view and respond.
 *   **Wander Further:** If you reach the edge of the generated content, click **WANDER FURTHER**. The system will look at the last frame, dream up a new adjacent location, and expand the world.
 *   **Compile Journal:** Click **Compile World Dream Journal** to stitch your entire journey into a single movie file.
