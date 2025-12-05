@@ -1060,7 +1060,7 @@ def autonomous_dream_loop(world_name, existing_history=None):
                 # Proceed with Guide query setup (manual question handling, etc.)
                 # ... (rest of question setup remains the same) ...
                 
-                base_prompt = "You are a seasoned traveler. Describe the **SINGLE, PRIMARY LOCATION**..."
+                base_prompt = "You are a seasoned traveler. Describe the **SINGLE, PRIMARY LOCATION** shown in the image with vivid, sensory details including lighting. Use less than 50 words. Do not list multiple places or objects that contradict each other, unless they clearly appear in the place. Even if the place seems abstract, confidently identify the main terrain and mood."
                 
                 if pending_guide_question:
                     # ... (manual question logic remains the same) ...
